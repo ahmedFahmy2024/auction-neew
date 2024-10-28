@@ -14,3 +14,21 @@ export const auctionSchema = z.object({
 });
 
 export type auctionType = z.infer<typeof auctionSchema>;
+
+export const priceSchema = z.object({
+  _id: z.string().optional(),
+  openPriceKey: z.string().optional(),
+  openPriceValue: z.string().optional(),
+  seekingPercentKey: z.string().optional(),
+  seekingPercentValue: z.string().optional(),
+  taxKey: z.string().optional(),
+  taxValue: z.string().optional(),
+  increaseKey: z.string().optional(),
+  increaseValue: z.string().optional(),
+  paddleNumKey: z.string().optional(),
+  paddleNumValue: z.string().optional(),
+  subTotalValue: z.string().optional(),
+  totalVAlue: z.string().optional(),
+});
+
+export type priceType = z.infer<typeof priceSchema>;
