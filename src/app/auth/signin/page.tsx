@@ -20,6 +20,7 @@ const Login = () => {
       // Set isAdmin in local storage
       localStorage.setItem("isAdmin", "1");
       router.push("/");
+      window.location.reload();
       toast.success("تم تسجيل الدخول بنجاح");
     } else {
       toast.error("البيانات غير صحيحة");
