@@ -38,7 +38,7 @@ type AuctionData = {
 
 export default async function Home() {
   const data = await fetchAuction();
-  console.log(data);
+  // console.log(data);
 
   return (
     <main>
