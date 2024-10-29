@@ -3,26 +3,26 @@
 import { Button } from "@/components/ui/button";
 import { ColumnDef } from "@tanstack/react-table";
 import { priceType } from "@/lib/schema";
-import { BASE_URL, PRICES } from "@/server/Api";
-import EditBtn from "./EditBtn";
-import DeleteBtn from "./DeleteBtn";
+// import { BASE_URL, PRICES } from "@/server/Api";
+// import EditBtn from "./EditBtn";
+// import DeleteBtn from "./DeleteBtn";
 
-const handleDelete = async (id: string) => {
-  try {
-    const response = await fetch(`${BASE_URL}${PRICES}/${id}`, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+// const handleDelete = async (id: string) => {
+//   try {
+//     const response = await fetch(`${BASE_URL}${PRICES}/${id}`, {
+//       method: "DELETE",
+//       headers: {
+//         "Content-Type": "application/json",
+//       },
+//     });
 
-    if (!response.ok) {
-      throw new Error("Failed to delete bidder");
-    }
-  } catch (error) {
-    console.error("Error deleting bidder:", error);
-  }
-};
+//     if (!response.ok) {
+//       throw new Error("Failed to delete bidder");
+//     }
+//   } catch (error) {
+//     console.error("Error deleting bidder:", error);
+//   }
+// };
 
 export const columns: ColumnDef<priceType>[] = [
   {
@@ -230,18 +230,18 @@ export const columns: ColumnDef<priceType>[] = [
       return <span className="font-mono">{total}</span>;
     },
   },
-  {
-    id: "actions",
-    header: "التعديل والحذف",
-    cell: ({ row }) => {
-      const priceId = row.original._id;
+  // {
+  //   id: "actions",
+  //   header: "التعديل والحذف",
+  //   cell: ({ row }) => {
+  //     const priceId = row.original._id;
 
-      return (
-        <div className="flex items-center justify-center gap-2">
-          <EditBtn id={priceId} />
-          <DeleteBtn priceId={priceId} handleDelete={handleDelete} />
-        </div>
-      );
-    },
-  },
+  //     return (
+  //       <div className="flex items-center justify-center gap-2">
+  //         <EditBtn id={priceId} />
+  //         <DeleteBtn priceId={priceId} handleDelete={handleDelete} />
+  //       </div>
+  //     );
+  //   },
+  // },
 ];
