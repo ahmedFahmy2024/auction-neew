@@ -9,6 +9,7 @@ async function fetchAuction() {
       headers: {
         "Content-Type": "application/json",
       },
+      next: { revalidate: 0 }, // Disable cache
     });
 
     if (!response.ok) {
