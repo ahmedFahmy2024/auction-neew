@@ -1,17 +1,10 @@
 "use client";
+import { useAuth } from "@/context/AuthContext";
 import { Plus } from "lucide-react";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
 
 const AddComponent = () => {
-  const [isAdmin, setIsAdmin] = useState(false);
-
-  useEffect(() => {
-    const storedIsAdmin = localStorage.getItem("isAdmin");
-    if (storedIsAdmin === "1") {
-      setIsAdmin(true);
-    }
-  }, []);
+  const { isAdmin } = useAuth();
 
   if (!isAdmin) return null;
 

@@ -1,8 +1,9 @@
 "use client";
+import { useAuth } from "@/context/AuthContext";
 import { AUCTIONS, BASE_URL } from "@/server/Api";
 import { Pencil, Trash2 } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import toast from "react-hot-toast";
 
 const handleDelete = async (id: string) => {
@@ -23,7 +24,7 @@ const handleDelete = async (id: string) => {
 };
 
 const ActionButton = ({ item }: { item: { _id: string } }) => {
-  const [isAdmin, setIsAdmin] = useState(false);
+  const { isAdmin } = useAuth();
   const router = useRouter();
   const [isDeleting, setIsDeleting] = useState(false);
 
@@ -42,13 +43,6 @@ const ActionButton = ({ item }: { item: { _id: string } }) => {
       setIsDeleting(false);
     }
   };
-
-  useEffect(() => {
-    const storedIsAdmin = localStorage.getItem("isAdmin");
-    if (storedIsAdmin === "1") {
-      setIsAdmin(true);
-    }
-  }, []);
 
   if (!isAdmin) return null;
 

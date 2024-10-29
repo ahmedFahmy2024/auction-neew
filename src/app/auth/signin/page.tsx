@@ -7,20 +7,19 @@ import { Label } from "@/components/ui/label";
 import { Mail, Lock } from "lucide-react";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
+import { useAuth } from "@/context/AuthContext";
 
 const Login = () => {
   const router = useRouter();
+  const { login } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Check if the entered credentials match the admin credentials
     if (email === "admin@gmail.com" && password === "123456") {
-      // Set isAdmin in local storage
-      localStorage.setItem("isAdmin", "1");
+      login();
       router.push("/");
-      window.location.reload();
       toast.success("تم تسجيل الدخول بنجاح");
     } else {
       toast.error("البيانات غير صحيحة");

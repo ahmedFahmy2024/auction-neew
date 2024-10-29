@@ -8,6 +8,7 @@ type RightPartProps = {
 };
 
 const RightPart = ({ data }: RightPartProps) => {
+  console.log(data);
   if (!data) {
     return null;
   }
@@ -39,23 +40,32 @@ const RightPart = ({ data }: RightPartProps) => {
 
       {/* Video/Image Section */}
       <div className="relative w-full overflow-hidden rounded-xl bg-gray-100 shadow-lg">
-        <div className="relative aspect-video w-full">
-          <Image
-            src={data.imageValue[0]}
-            alt="Content image"
-            fill
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            priority
-            className="object-cover"
-          />
-        </div>
+        {data.videoValue ? (
+          <div className="relative aspect-video w-full">
+            <div
+              className="h-full w-full"
+              dangerouslySetInnerHTML={{ __html: data.videoValue }}
+            />
+          </div>
+        ) : (
+          <div className="relative aspect-video w-full">
+            <Image
+              src={data.imageValue[0]}
+              alt="Content image"
+              fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              priority
+              className="object-cover"
+            />
+          </div>
+        )}
       </div>
 
       {/* Title Section */}
       {data.titleValue && (
         <DiagonalHeader
-          bgColor="bg-[#001647]"
-          title="المجموع (أعلى مزايدة + قيمة السعى)"
+          bgColor="bg-[#342D23]"
+          title="المجموع أعلى مزايدة + قيمة السعي + الضريبة"
         />
       )}
     </div>

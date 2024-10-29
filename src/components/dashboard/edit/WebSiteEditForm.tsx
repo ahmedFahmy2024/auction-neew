@@ -122,6 +122,7 @@ const WebSiteEditForm = ({ website }: WebsiteEditFormProps) => {
       toast.error("Failed to update view");
     }
   };
+
   return (
     <div className="flex-1 rounded-lg bg-white px-4 py-6 shadow-sm sm:px-6">
       <div className="h-full min-h-[500px] w-full">
@@ -213,48 +214,46 @@ const WebSiteEditForm = ({ website }: WebsiteEditFormProps) => {
               )}
             />
 
-            <div className="col-span-2">
-              <FormField
-                control={form.control}
-                name="dateStart"
-                render={({ field }) => (
-                  <FormItem className="flex flex-col">
-                    <FormLabel>تاريخ البدء</FormLabel>
-                    <Popover>
-                      <PopoverTrigger asChild>
-                        <FormControl>
-                          <Button
-                            variant={"outline"}
-                            className={cn(
-                              "justify-between pl-3 text-left font-normal",
-                              !field.value && "text-muted-foreground"
-                            )}
-                          >
-                            {field.value ? (
-                              format(field.value, "PPP")
-                            ) : (
-                              <span>اختر تاريخ البدء</span>
-                            )}
-                            <CalendarIcon className="h-4 w-4 opacity-50" />
-                          </Button>
-                        </FormControl>
-                      </PopoverTrigger>
-                      <PopoverContent className="w-auto p-0" align="start">
-                        <Calendar
-                          mode="single"
-                          selected={field.value}
-                          onSelect={field.onChange}
-                          initialFocus
-                        />
-                      </PopoverContent>
-                    </Popover>
-                    <FormMessage>
-                      {form.formState.errors.dateStart?.message}
-                    </FormMessage>
-                  </FormItem>
-                )}
-              />
-            </div>
+            <FormField
+              control={form.control}
+              name="dateStart"
+              render={({ field }) => (
+                <FormItem className="flex flex-col">
+                  <FormLabel>تاريخ البدء</FormLabel>
+                  <Popover>
+                    <PopoverTrigger asChild>
+                      <FormControl>
+                        <Button
+                          variant={"outline"}
+                          className={cn(
+                            "justify-between pl-3 text-left font-normal",
+                            !field.value && "text-muted-foreground"
+                          )}
+                        >
+                          {field.value ? (
+                            format(field.value, "PPP")
+                          ) : (
+                            <span>اختر تاريخ البدء</span>
+                          )}
+                          <CalendarIcon className="h-4 w-4 opacity-50" />
+                        </Button>
+                      </FormControl>
+                    </PopoverTrigger>
+                    <PopoverContent className="w-auto p-0" align="start">
+                      <Calendar
+                        mode="single"
+                        selected={field.value}
+                        onSelect={field.onChange}
+                        initialFocus
+                      />
+                    </PopoverContent>
+                  </Popover>
+                  <FormMessage>
+                    {form.formState.errors.dateStart?.message}
+                  </FormMessage>
+                </FormItem>
+              )}
+            />
 
             <FormField
               control={form.control}

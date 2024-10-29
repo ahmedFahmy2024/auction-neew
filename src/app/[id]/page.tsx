@@ -7,6 +7,7 @@ import RightPart from "@/components/website/RightPart";
 import { AUCTIONS, BASE_URL, PRICES } from "@/server/Api";
 import { useParams } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
+import background from "@/assets/backgo.jpg";
 
 async function fetchWebsite(id: string) {
   try {
@@ -77,17 +78,20 @@ const Projector = () => {
   }, [fetchData]);
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 py-8">
+    <main
+      style={{ backgroundImage: `url(${background.src})` }}
+      className="h-[calc(100vh-80px)] bg-cover bg-center flex items-center"
+    >
       <div className="container mx-auto px-4 md:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           {/* right part */}
-          <Card className="overflow-hidden shadow-lg">
+          <Card className="overflow-hidden  bg-[#ffffff29] border-none">
             <CardContent className="p-6">
               <RightPart data={data} />
             </CardContent>
           </Card>
           {/* left part */}
-          <Card className="flex items-center justify-center overflow-hidden shadow-lg">
+          <Card className="flex items-center justify-center overflow-hidden  bg-[#ffffff29] border-none">
             <CardContent className="w-full p-6">
               <LeftPart price={price[0]} data={data} />
             </CardContent>

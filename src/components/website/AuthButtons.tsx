@@ -1,35 +1,26 @@
 "use client";
-import React, { useEffect, useState } from "react";
 
 import { LogIn, LogOut } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { Button } from "../ui/button";
+import { useAuth } from "@/context/AuthContext";
 
 const AuthButtons = () => {
   const router = useRouter();
-  const [isAdmin, setIsAdmin] = useState(false);
-
-  useEffect(() => {
-    const storedIsAdmin = localStorage.getItem("isAdmin");
-    if (storedIsAdmin === "1") {
-      setIsAdmin(true);
-    }
-  }, []);
+  const { isAdmin, logout } = useAuth();
 
   const handleLogout = () => {
-    // Remove isAdmin from local storage and update state
-    localStorage.removeItem("isAdmin");
-    setIsAdmin(false);
+    logout();
     router.push("/");
-    window.location.reload();
   };
+
   return (
     <>
       {isAdmin ? (
         <Button
           variant="outline"
           size="sm"
-          className="text flex items-center gap-2 bg-red-500 px-2 text-white transition-colors"
+          className="text flex items-center gap-2 bg-red-500 px-2 text-white transition-colors border-none "
           onClick={handleLogout}
         >
           <LogOut size={16} />

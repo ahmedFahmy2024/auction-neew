@@ -8,6 +8,7 @@ export type website = {
   imageValue: string[];
   imageCover: string;
   dateStart: string;
+  videoValue?: string | undefined;
 };
 
 export type price = {
